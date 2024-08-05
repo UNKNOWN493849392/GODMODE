@@ -1,0 +1,46 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = playerGui
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(1, 0, 1, 0)
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BorderColor3 = Color3.new(0.6, 0.5, 0.4)
+frame.BorderSizePixel = 2
+frame.BackgroundTransparency = 0.25
+frame.Parent = screenGui
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 0.1, 0)
+textLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+textLabel.Font = Enum.Font.GothamMedium
+textLabel.TextColor3 = Color3.new(0.8, 0.8, 0.8)
+textLabel.Text = "GODMODE"
+textLabel.TextSize = 28
+textLabel.Parent = frame
+
+local buttonGui = Instance.new("ButtonGui")
+buttonGui.Name = "START"
+buttonGui.BackgroundColor3 = Color3.new(0, 1, 0)
+buttonGui.Parent = screenGui
+
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(1, 0, 0.1, 0)
+button.Text = "START"
+button.TextColor3 = Color3.new(0, 0, 0)
+button.Font = Enum.Font.GothamMedium
+button.TextSize = 28
+button.Parent = buttonGui
+
+local function onButtonClicked()
+    local character = player.Character
+    local humanoid = character:FindFirstChild("Humanoid")
+    if humanoid then
+        humanoid.Health = 100000000
+    end
+end
+
+button.MouseButton1Click:Connect(onButtonClicked)
